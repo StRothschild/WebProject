@@ -5,7 +5,7 @@ module.exports = {
     entry: path.resolve('webpackMain.js'),       // path.resolve 返回一个以相对于当前的工作目录的绝对路径  
     output: {
         path: path.join(__dirname, '/dist'),     // path.join 将参数组合成一个路径并返回    __dirname 是 Node.js 全局对象上的一个熟悉代表当前文件的绝对路径  
-        filename: 'my-first-webpack.bundle.js'   // 输出的文件名
+        filename: 'myWebpack.bundle.js'   // 输出的文件名
     },
 
     devServer: {
