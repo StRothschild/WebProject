@@ -8,11 +8,14 @@
   },
   "author": "JiangSheng",
   "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "koa": "^2.5.2",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0"
+  },
   "devDependencies": {
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
-  },
-  "dependencies": {
-    "lodash": "^4.17.10"
   }
 }
