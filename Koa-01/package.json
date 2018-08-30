@@ -1,7 +1,7 @@
 {
-  "name": "KoaHelloWorld",
+  "name": "koa-hello-world",
   "version": "1.0.0",
-  "description": "Koa hello wrold.",
+  "description": "Koa hello wrold",
   "main": "app.js",
   "dependencies": {
     "koa": "^2.5.2",
