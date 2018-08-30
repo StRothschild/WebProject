@@ -1,8 +1,8 @@
 {
-  "name": "project01",
+  "name": "KoaHelloWorld",
   "version": "1.0.0",
-  "description": "Project 01",
-  "private": true,
+  "description": "Koa hello wrold.",
+  "main": "app.js",
   "dependencies": {
     "koa": "^2.5.2",
     "koa-route": "^3.2.0",
