@@ -12,7 +12,8 @@ const koaApp = new koa;
 
 // 拦截静态资源请求
 let staticPath = path.join(__dirname, 'static');  // Node.js 通过 __dirname 获取当前文件所在目录
-koaApp.use(static(staticPath));           // koa-static 会将请求拦截并映射到 staticPath 路径下，比如 localhost:3000/js/bar 就会被映射到 __dirname/static/js/bar 
+// koa-static 会将请求拦截并映射到 staticPath 路径下，比如 localhost:3000/js/bar 就会被映射到 __dirname/static/js/bar 
+koaApp.use(static(staticPath));
 
 // 注意：koa-static 中间件在对应目录下查找目标资源失败后会默认返回 index.html。所以如果找不到目标资源且目录下正好有个 index.html 文件，则会被返回。
 
@@ -80,9 +81,9 @@ koaApp.use(router.get('/download', (ctx, next) => {
 
 
 
-// 通过 koaApp 对象启动一个server
-const server = koaApp.listen(3000, function () {
-    const host = server.address().address;
-    const port = server.address().port;
+// 通过 koaApp 对象启动一个 server
+const koaServer = koaApp.listen(3000, function () {
+    const host = koaServer.address().address;
+    const port = koaServer.address().port;
     console.log('koaApp is listening at http://localhost:' + port);
 });
