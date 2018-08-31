@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import './style.css';
 
 function init() {
     let element = document.createElement('div');

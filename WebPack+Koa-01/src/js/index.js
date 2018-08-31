@@ -1,16 +1,6 @@
 import _ from 'lodash';
 
-// 页面初始化操作
-function init() {
-    let element = document.createElement('div');
-    element.innerHTML = _.join(['Hello', 'webpack & Koa'], ' ');
-    return element;
-}
-document.body.appendChild(init());
-
-
-
-// 设置监听
+// 设置 URL
 const getJsonDataUrl = 'jsonData';
 const downloadUrl = 'download';
 
@@ -32,8 +22,19 @@ document.addEventListener('readystatechange', function () {
     }
 });
 
+
+// 页面初始化操作
+function init() {
+    let element = document.createElement('div');
+    element.innerHTML = _.join(['Hello', 'webpack & Koa!'], ' ');
+    return element;
+}
+
 // jQuery 调用 Ajax
 $(document).ready(function () {
+    //初始化页面
+    document.body.appendChild(init());
+
     $('#downlodButton').click(function () {
         window.open(downloadUrl);
     });
