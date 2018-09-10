@@ -1,21 +1,25 @@
 {
   "name": "webpack-hello-world",
-  "version": "1.0.0",
-  "description": "WebPack Hello World",
+  "version": "2.0.0",
+  "description": "WebPack Dev",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "start": "webpack-dev-server --open"
   },
   "author": "JiangSheng",
   "license": "MIT",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8",
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
