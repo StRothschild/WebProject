@@ -24,6 +24,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.styl$/,
+                loader: 'style-loader!css-loader!stylus-loader'    // 将 stylus 转换成 css
+            },
+            {
                 test: /\.css$/,
                 // 注意 loader 的加载顺序是从右往左，所以此处应该 style-loader 在前
                 use: [

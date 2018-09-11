@@ -4,6 +4,9 @@ import pic from './h5.gif';
 import xmlData from './xmlData.xml';
 import printLog from './printfn.js';
 
+// 导入 stylus 文件
+var css = require('./stylus/index.styl');
+
 function init() {
     // 新增 div
     let element = document.createElement('div');
