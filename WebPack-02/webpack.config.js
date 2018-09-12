@@ -25,14 +25,38 @@ module.exports = {
         rules: [
             {
                 test: /\.styl$/,
-                loader: 'style-loader!css-loader!stylus-loader'    // 将 stylus 转换成 css
+                // 从下至上执行各个 loader，stylus 被编译成 css 并嵌入 html
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'stylus-loader'
+                    }
+                ]
+                // 简略写法1
+                //loader: 'style-loader!css-loader!stylus-loader'
+                // 简略写法2
+                //use: ['style-loader','css-loader','stylus-loader']
             },
             {
-                test: /\.css$/,
+                // 使用 style 标签导入 css
+                test: /\.style.css$/,
                 // 注意 loader 的加载顺序是从右往左，所以此处应该 style-loader 在前
                 use: [
-                    'style-loader',    // 将css-loader加载的样式内联到 HTML
-                    'css-loader'       // css文件加载器
+                    'style-loader',    // 将 css-loader 加载的文件以 style 标签添加到 HTML
+                    'css-loader'       // 将 css 文件加载
+                ]
+            },
+            {
+                // 使用 link 标签导入 css
+                test: /\.link.css$/,
+                use: [
+                    'style-loader/url',      // 将 file-loader 加载的文件以 link 标签添加到 HTML
+                    'file-loader'            // 将 css 当成文件加载
                 ]
             },
             {

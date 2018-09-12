@@ -1,11 +1,20 @@
+// 导入文件
 import _ from 'lodash';
-import './style.css';
+// 导入 css 文件
+import './css/index.style.css';
+import './css/index.link.css';
+// 导入 style 文件, 也可以用 require
+import './css/stylus/index.styl';
+//require('./stylus/index.styl');
+
+// 导入 gif 文件
 import pic from './h5.gif';
+// 导入 xml 文件
 import xmlData from './xmlData.xml';
+// 导入 js 文件
 import printLog from './printfn.js';
 
-// 导入 stylus 文件
-var css = require('./stylus/index.styl');
+
 
 function init() {
     // 新增 div
