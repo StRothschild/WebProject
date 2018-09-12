@@ -56,7 +56,7 @@ module.exports = {
                 test: /\.link.css$/,
                 use: [
                     'style-loader/url',      // 将 file-loader 加载的文件以 link 标签添加到 HTML
-                    'file-loader'            // 将 css 当成文件加载
+                    'file-loader'            // 将 css 文件当成普通文件加载
                 ]
             },
             {

@@ -5,7 +5,7 @@ import './css/index.style.css';
 import './css/index.link.css';
 // 导入 style 文件, 也可以用 require
 import './css/stylus/index.styl';
-//require('./stylus/index.styl');
+//require('./css/stylus/index.styl');
 
 // 导入 gif 文件
 import pic from './h5.gif';
@@ -15,7 +15,8 @@ import xmlData from './xmlData.xml';
 import printLog from './printfn.js';
 
 
-
+// 调用 init 方法
+document.body.appendChild(init());
 function init() {
     // 新增 div
     let element = document.createElement('div');
@@ -32,7 +33,6 @@ function init() {
     return element;
 }
 
-document.body.appendChild(init());
 
 // 调用 printLog 方法
 printLog();
