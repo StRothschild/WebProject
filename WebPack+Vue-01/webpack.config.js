@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: {
         index: './src/index.js',
-        printfn: './src/printfn.js'
     },
     output: {
         // 基于文件的 md5 生成 Hash 名称的可以用来防止缓存
@@ -21,12 +20,23 @@ module.exports = {
         contentBase: './static'
     },
 
+    // 解析模块请求
+    resolve: {
+        alias: {
+            // 在请求(import)模块时， Webpack 默认调用的是 runtime 版的 Vue
+            // 所以需要通过 resolve 指定带有编译器的 Vue 完整版本 
+            // 在 NPM 包的 dist 目录下有多个 Vue 版本，例如 vue.runtime.esm.js 和 vue.common.js
+            // esm 代表 ESModule，common 代表 commonejs。详见 Vue 官方文档
+            'vue$': 'vue/dist/vue.esm.js'
+        }
+    },
+
     // 加载非 js/json 类型的资源需要通过配置各种加载器
     module: {
         rules: [
             {
                 test: /\.styl$/,
-                // 从下至上执行各个 loader，stylus 被编译成 css 并嵌入 html
+                // 从下至上执行各个 loader，stylus 被编译成 css 并通过 style 标签嵌入 html
                 use: [
                     {
                         loader: 'style-loader'
