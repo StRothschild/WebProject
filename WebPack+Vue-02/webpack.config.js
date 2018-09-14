@@ -12,7 +12,7 @@ module.exports = {
     output: {
         // 基于文件的 md5 生成 Hash 名称的可以用来防止缓存
         filename: '[name].[hash].js',
-        path: path.resolve(__dirname, 'static')
+        path: path.resolve(__dirname, 'dist')
     },
 
     // 使用 source-map 开发工具来查找出错代码
@@ -20,7 +20,7 @@ module.exports = {
 
     // 使用 webpack-dev-server 进行本地开发， webpack-dev-server 会读取内存，不会输出文件
     devServer: {
-        contentBase: './static'
+        contentBase: './dist'
     },
 
     // 解析模块请求
@@ -73,8 +73,8 @@ module.exports = {
             filename: 'index.html',
             template: './src/view/indexTemplate.html'
         }),
-        // 清理 static 目录下所有文件
-        new CleanWebpackPlugin(['./static']),
+        // 清理 dist 目录下所有文件
+        new CleanWebpackPlugin(['./dist']),
         // 提取 css 文件 
         new ExtractTextPlugin('[name].[hash].css')  // 输出的 css 文件名，输出路径默认为 output 中 path 的配置
     ]
