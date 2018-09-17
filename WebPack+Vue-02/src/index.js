@@ -8,15 +8,18 @@ import './css/index.css';
 import './css/stylus/index.styl';
 // 导入 less 文件
 //import './css/less/index.less';
-
-// 导入 gif 文件
-import pic from './h5.gif';
-
+// 导入 vue 文件
+import homePage from './js/home/home.vue';
 
 
+// 创建根 Vue
 var app = new Vue({
     el: '#app',
     data: {
         message: 'Hello Wabpack & Vue!'
+    },
+    // 注册 vue 组件
+    components: {
+        'home-page': homePage
     }
 });

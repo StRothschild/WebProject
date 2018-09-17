@@ -3,7 +3,8 @@ const path = require('path');
 // 引入插件模块
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: {
@@ -34,7 +35,7 @@ module.exports = {
         }
     },
 
-    // 加载非 js/json 类型的资源需要通过配置各种加载器
+    // 加载非 js/json 类型的模块时需要通过配置各种加载器来处理并加载
     module: {
         rules: [
             {
@@ -76,6 +77,8 @@ module.exports = {
         // 清理 dist 目录下所有文件
         new CleanWebpackPlugin(['./dist']),
         // 提取 css 文件 
-        new ExtractTextPlugin('[name].[hash].css')  // 输出的 css 文件名，输出路径默认为 output 中 path 的配置
+        new ExtractTextPlugin('[name].[hash].css'),  // 输出的 css 文件名，输出路径默认为 output 中 path 的配置
+        // 必须引入此插件才能运行 VueLoader
+        new VueLoaderPlugin()
     ]
 };
