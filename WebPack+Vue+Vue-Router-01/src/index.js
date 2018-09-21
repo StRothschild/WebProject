@@ -6,19 +6,20 @@ import _ from 'lodash';
 import './css/index.css';
 // 导入 style 文件
 import './css/stylus/index.styl';
-// 导入也可以用 require 语法
-//require('./css/stylus/index.styl');
-
-// 导入 gif 文件
-import pic from './h5.gif';
-// 导入 js 文件
-//import printLog from './printfn.js';
+// 导入 less 文件
+//import './css/less/index.less';
+// 导入 vue 文件
+import homePage from './js/home/home.vue';
 
 
-
+// 创建根 Vue
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Wabpack & Vue!'
+        message: 'Hello Wabpack & Vue 02!'
+    },
+    // 注册 vue 组件
+    components: {
+        'home-page': homePage
     }
 });

@@ -1,6 +1,10 @@
+// path 是 node 内置模块
 const path = require('path');
+// 引入插件模块
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: {
@@ -9,7 +13,7 @@ module.exports = {
     output: {
         // 基于文件的 md5 生成 Hash 名称的可以用来防止缓存
         filename: '[name].[hash].js',
-        path: path.resolve(__dirname, 'static')
+        path: path.resolve(__dirname, 'dist')
     },
 
     // 使用 source-map 开发工具来查找出错代码
@@ -17,7 +21,7 @@ module.exports = {
 
     // 使用 webpack-dev-server 进行本地开发， webpack-dev-server 会读取内存，不会输出文件
     devServer: {
-        contentBase: './static'
+        contentBase: './dist'
     },
 
     // 解析模块请求
@@ -31,34 +35,22 @@ module.exports = {
         }
     },
 
-    // 加载非 js/json 类型的资源需要通过配置各种加载器
+    // 加载非 js/json 类型的模块时需要通过配置各种加载器来处理并加载
     module: {
         rules: [
             {
                 test: /\.styl$/,
-                // 从下至上执行各个 loader，stylus 被编译成 css 并通过 style 标签嵌入 html
-                use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader'
-                    },
-                    {
-                        loader: 'stylus-loader'
-                    }
-                ]
-                // 简略写法1
-                //loader: 'style-loader!css-loader!stylus-loader'
-                // 简略写法2
-                //use: ['style-loader','css-loader','stylus-loader']
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'stylus-loader']
+                })
             },
             {
-                // 使用 link 标签导入 css
+                // 使用 style 标签导入 css 文件
                 test: /\.css$/,
                 use: [
-                    'style-loader/url',      // 将 file-loader 加载的文件以 link 标签添加到 HTML
-                    'file-loader'            // 将 css 文件当成普通文件加载
+                    'style-loader',          // 将 file-loader 加载的文件以 style 标签添加到 HTML
+                    'css-loader'             // 将 css 文件加载
                 ]
             },
             {
@@ -82,7 +74,11 @@ module.exports = {
             filename: 'index.html',
             template: './src/view/indexTemplate.html'
         }),
-        // 清理 static 目录下所有文件
-        new CleanWebpackPlugin(['./static'])
+        // 清理 dist 目录下所有文件
+        new CleanWebpackPlugin(['./dist']),
+        // 提取 css 文件 
+        new ExtractTextPlugin('[name].[hash].css'),  // 输出的 css 文件名，输出路径默认为 output 中 path 的配置
+        // 必须引入此插件才能运行 VueLoader
+        new VueLoaderPlugin()
     ]
 };

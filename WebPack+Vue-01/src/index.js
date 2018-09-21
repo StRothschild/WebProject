@@ -19,6 +19,6 @@ import pic from './h5.gif';
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Wabpack & Vue!'
+        message: 'Hello Wabpack & Vue 01'
     }
 });

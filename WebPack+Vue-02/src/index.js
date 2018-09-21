@@ -16,7 +16,7 @@ import homePage from './js/home/home.vue';
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Wabpack & Vue!'
+        message: 'Hello Wabpack & Vue 02!'
     },
     // 注册 vue 组件
     components: {
