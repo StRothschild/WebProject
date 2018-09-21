@@ -8,7 +8,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: {
-        index: './src/index.js',
+        index: './src/js/index.js',    // 入口文件
     },
     output: {
         // 基于文件的 md5 生成 Hash 名称的可以用来防止缓存
@@ -35,7 +35,7 @@ module.exports = {
         }
     },
 
-    // 加载非 js/json 类型的模块时需要通过配置各种加载器来处理并加载
+    // 加载非 js/json 类型的文件时需要通过配置各种加载器来处理并加载
     module: {
         rules: [
             {
