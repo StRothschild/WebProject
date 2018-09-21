@@ -32,8 +32,8 @@ const router = new VueRouter({
 // 创建根 Vue
 new Vue({
     el: '#app',
-    router: router,   // 缩写, 相当于 router: router
+    router,   // 缩写, 相当于 router: router
     data: {
-        message: 'Hello Wabpack & Vue & Vue-Router 01!'
+        message: 'Hello Wabpack & Vue & Vue-Router & Axios 01!'
     }
 });
